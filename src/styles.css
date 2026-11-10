@@ -352,6 +352,11 @@ main { overflow: clip; }
   .hero-name-last { margin-top: 8px; }
   .hero-layout { position: relative; grid-template-columns: 1fr 1fr; gap: 0 16px; min-height: 375px; margin-top: -1px; }
   .portrait-placeholder { position: absolute; left: 50%; bottom: 0; width: min(64%, 276px); aspect-ratio: .9; transform: translateX(-50%); }
+  .hero-side-left, .hero-side-right { grid-row: 1; }
+  .hero-side-left { grid-column: 1; }
+  .hero-side-right { grid-column: 2; }
+  .hero-layout { padding-bottom: 235px; }
+  .hero-layout .portrait-placeholder { bottom: 0; }
   .hero-side { position: relative; z-index: 3; align-self: start; margin-top: 38px; }
   .side-index { font-size: 7px; }
   .side-main { margin-top: 12px; font-size: 14px; }
