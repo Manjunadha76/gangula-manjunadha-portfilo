@@ -350,12 +350,12 @@ main { overflow: clip; }
   .hero-greeting { font-size: 18px; }
   .hero h1 { font-size: clamp(48px, 12.2vw, 80px); line-height: .83; }
   .hero-name-last { margin-top: 8px; }
-  .hero-layout { position: relative; grid-template-columns: 1fr 1fr; gap: 0 16px; min-height: 375px; margin-top: -1px; }
+  .hero-layout { position: relative; grid-template-columns: 1fr 1fr; grid-template-rows: 190px 1fr; gap: 0 16px; min-height: 530px; margin-top: -1px; }
   .portrait-placeholder { position: absolute; left: 50%; bottom: 0; width: min(64%, 276px); aspect-ratio: .9; transform: translateX(-50%); }
   .hero-side-left, .hero-side-right { grid-row: 1; }
   .hero-side-left { grid-column: 1; }
   .hero-side-right { grid-column: 2; }
-  .hero-layout { padding-bottom: 235px; }
+  .hero-layout { padding-bottom: 0; }
   .hero-layout .portrait-placeholder { bottom: 0; }
   .hero-side { position: relative; z-index: 3; align-self: start; margin-top: 38px; }
   .side-index { font-size: 7px; }
