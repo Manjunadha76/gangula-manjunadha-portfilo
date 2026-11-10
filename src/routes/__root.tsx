@@ -81,11 +81,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Gangula Manjunadha — Full Stack & AI Developer" },
+      {
+        name: "description",
+        content: "Full Stack Development, Generative AI and privacy-conscious healthcare technology by Gangula Manjunadha.",
+      },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Gangula Manjunadha — Full Stack & AI Developer" },
+      {
+        property: "og:description",
+        content: "Full Stack Development, Generative AI and privacy-conscious healthcare technology by Gangula Manjunadha.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
