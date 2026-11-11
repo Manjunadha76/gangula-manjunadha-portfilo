@@ -27,6 +27,7 @@ import { Button } from "@/components/ui/button";
 import lungProject from "@/assets/federated-lung-research.jpg";
 import foodProject from "@/assets/food-ordering-project.jpg";
 import healthcareProject from "@/assets/healthcare-ai-project.jpg";
+import profileImage from "@/assets/gangula-manjunadha-profile.png";
 
 const email = "gangulamanjunadha@gmail.com";
 const phone = "+91 9515083532";
@@ -226,11 +227,10 @@ function Portfolio() {
               <div className="side-rule" />
               <p className="side-small">KORM College of Engineering<br />Class of 2026</p>
             </div>
-            <div className="portrait-placeholder" aria-label="Profile photo placeholder">
+            <div className="portrait-placeholder">
               <div className="portrait-orbit orbit-one" aria-hidden="true" />
               <div className="portrait-orbit orbit-two" aria-hidden="true" />
-              <div className="portrait-inner"><span className="portrait-monogram">GM</span><span className="portrait-label">YOUR PHOTO<br />GOES HERE</span></div>
-              <span className="portrait-caption">PROFILE · PHOTO</span>
+              <img className="profile-image" src={profileImage} alt="Gangula Manjunadha" />
             </div>
             <div className="hero-side hero-side-right">
               <p className="side-index">02 — THE DIRECTION</p>

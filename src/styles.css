@@ -155,6 +155,7 @@ main { overflow: clip; }
 .hero-side-right .side-rule { margin-left: 0; }
 .side-small { margin: 0; color: color-mix(in oklab, var(--cream) 47%, transparent); font-size: 10px; line-height: 1.7; }
 .portrait-placeholder { width: 100%; max-width: 320px; aspect-ratio: .88; justify-self: center; align-self: end; position: relative; z-index: 2; display: grid; place-items: center; margin-top: -1px; overflow: hidden; background: linear-gradient(155deg, oklch(0.37 0.053 125 / 75%), oklch(0.22 0.047 123 / 37%) 70%); border: 1px solid oklch(0.86 0.16 121 / 32%); box-shadow: 0 0 76px oklch(0.84 0.13 122 / 10%), inset 0 0 65px oklch(0.15 0.04 120 / 40%); }
+.profile-image { position: absolute; z-index: 1; inset: auto 0 0; width: 100%; height: 96%; object-fit: contain; object-position: center bottom; }
 .portrait-placeholder::before { content: ""; position: absolute; width: 86%; aspect-ratio: 1; border: 1px solid oklch(0.87 0.15 121 / 15%); border-radius: 50%; }
 .portrait-placeholder::after { content: ""; position: absolute; left: 50%; top: 12%; bottom: 12%; width: 1px; background: linear-gradient(transparent, oklch(0.85 0.15 120 / 17%), transparent); }
 .portrait-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 7px; }
