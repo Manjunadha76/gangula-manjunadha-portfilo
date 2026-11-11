@@ -154,10 +154,9 @@ main { overflow: clip; }
 .side-rule { width: 34px; height: 1px; margin: 17px 0 13px auto; background: color-mix(in oklab, var(--lime) 72%, transparent); }
 .hero-side-right .side-rule { margin-left: 0; }
 .side-small { margin: 0; color: color-mix(in oklab, var(--cream) 47%, transparent); font-size: 10px; line-height: 1.7; }
-.portrait-placeholder { width: 100%; max-width: 320px; aspect-ratio: .88; justify-self: center; align-self: end; position: relative; z-index: 2; display: grid; place-items: center; margin-top: -1px; overflow: hidden; background: linear-gradient(155deg, oklch(0.37 0.053 125 / 75%), oklch(0.22 0.047 123 / 37%) 70%); border: 1px solid oklch(0.86 0.16 121 / 32%); box-shadow: 0 0 76px oklch(0.84 0.13 122 / 10%), inset 0 0 65px oklch(0.15 0.04 120 / 40%); }
-.profile-image { position: absolute; z-index: 1; inset: auto 0 0; width: 100%; height: 96%; object-fit: contain; object-position: center bottom; }
-.portrait-placeholder::before { content: ""; position: absolute; width: 86%; aspect-ratio: 1; border: 1px solid oklch(0.87 0.15 121 / 15%); border-radius: 50%; }
-.portrait-placeholder::after { content: ""; position: absolute; left: 50%; top: 12%; bottom: 12%; width: 1px; background: linear-gradient(transparent, oklch(0.85 0.15 120 / 17%), transparent); }
+.portrait-placeholder { width: 100%; max-width: 320px; aspect-ratio: .88; justify-self: center; align-self: end; position: relative; z-index: 4; display: grid; place-items: center; margin-top: -1px; overflow: visible; background: transparent; border: 0; box-shadow: none; }
+.profile-image { position: absolute; z-index: 1; left: 50%; bottom: 0; width: 140%; height: 140%; transform: translateX(-50%); object-fit: contain; object-position: center bottom; }
+.portrait-placeholder::before, .portrait-placeholder::after, .portrait-orbit { display: none; }
 .portrait-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 7px; }
 .portrait-monogram { color: oklch(0.9 0.12 121 / 72%); font-size: clamp(75px, 11vw, 130px); font-weight: 700; line-height: .9; }
 .portrait-label { color: color-mix(in oklab, var(--cream) 65%, transparent); text-align: center; font-size: 8px; line-height: 1.7; letter-spacing: .13em; }
@@ -352,13 +351,13 @@ main { overflow: clip; }
   .hero h1 { font-size: clamp(48px, 12.2vw, 80px); line-height: .83; }
   .hero-name-last { margin-top: 8px; }
   .hero-layout { position: relative; grid-template-columns: 1fr 1fr; grid-template-rows: 190px 1fr; gap: 0 16px; min-height: 530px; margin-top: -1px; }
-  .portrait-placeholder { position: absolute; left: 50%; bottom: 0; width: min(64%, 276px); aspect-ratio: .9; transform: translateX(-50%); }
+  .portrait-placeholder { position: absolute; left: 50%; top: 10px; bottom: auto; width: min(64%, 276px); aspect-ratio: .9; transform: translateX(-50%); }
   .hero-side-left, .hero-side-right { grid-row: 1; }
   .hero-side-left { grid-column: 1; }
   .hero-side-right { grid-column: 2; }
   .hero-layout { padding-bottom: 0; }
-  .hero-layout .portrait-placeholder { bottom: 0; }
-  .hero-side { position: relative; z-index: 3; align-self: start; margin-top: 38px; }
+  .hero-layout .portrait-placeholder { top: 10px; bottom: auto; }
+  .hero-side { position: relative; z-index: 5; align-self: start; margin-top: 38px; }
   .side-index { font-size: 7px; }
   .side-main { margin-top: 12px; font-size: 14px; }
   .side-caption { font-size: 9px; }
