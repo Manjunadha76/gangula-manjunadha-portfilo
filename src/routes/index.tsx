@@ -259,7 +259,7 @@ function Portfolio() {
           <SectionHeading eyebrow="A LITTLE ABOUT ME" title={<>Curiosity, with<br /><em>a purpose.</em></>} number="01" />
           <div className="about-grid">
             <div className="about-lede"><p>I’m a Computer Science graduate drawn to the point where <span className="lime-text">thoughtful software</span> meets real-world impact.</p><p className="body-muted">From full-stack applications to Generative AI, I enjoy making complex ideas useful, secure and accessible. Today, I’m especially interested in healthcare technology and privacy-preserving machine learning.</p></div>
-            <div className="education-panel"><div className="education-top"><GraduationCap aria-hidden="true" /><span>EDUCATION · 2026</span></div><h3>B.Tech. in Computer Science & Engineering</h3><p className="college-name">Kandula Obul Reddy Memorial College of Engineering</p><div className="education-foot"><span>JNTU Anantapur</span><span className="education-score">8.3 <small>/ 10 CGPA</small></span></div></div>
+            <div className="education-panel"><div className="education-top"><GraduationCap aria-hidden="true" /><span>EDUCATION · 2026</span></div><h3>B.Tech. in Computer Science & Engineering</h3><p className="college-name">Kandula Obul Reddy Memorial College of Engineering</p><div className="education-foot"><span>JNTU Anantapur</span><span className="education-score">8.4 <small>/ 10 CGPA</small></span></div></div>
           </div>
           <div className="about-footnote"><span>WHAT I’M WORKING TOWARD</span><p>Secure systems. Useful AI. Technology that respects the people it serves.</p><HeartPulse aria-hidden="true" /></div>
         </div>
