@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowDown,
@@ -178,6 +178,42 @@ export const Route = createFileRoute("/")({
 function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState("");
+  const heroRef = useRef<HTMLElement | null>(null);
+  const heroInnerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    const heroInner = heroInnerRef.current;
+    if (!hero || !heroInner) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let frame = 0;
+    const updateProgress = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const scrollRange = hero.offsetHeight - heroInner.offsetHeight;
+        const progress = scrollRange > 0 ? Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / scrollRange)) : 0;
+        hero.style.setProperty("--hero-progress", String(progress));
+        const compactWidth = Math.min(window.innerWidth * (window.innerWidth < 700 ? 0.84 : 0.72), window.innerWidth < 700 ? 360 : 520);
+        const compactHeight = Math.min(window.innerHeight * (window.innerWidth < 700 ? 0.48 : 0.54), window.innerWidth < 700 ? 420 : 510);
+        hero.style.setProperty("--hero-frame-width", `${Math.round(window.innerWidth + (compactWidth - window.innerWidth) * progress)}px`);
+        hero.style.setProperty("--hero-frame-height", `${Math.round(window.innerHeight + (compactHeight - window.innerHeight) * progress)}px`);
+        hero.style.setProperty("--hero-frame-radius", `${Math.round(progress * 22)}px`);
+        hero.style.setProperty("--hero-content-opacity", String(Math.max(0, 1 - progress * 1.65)));
+        hero.style.setProperty("--hero-motion-opacity", String(Math.min(1, Math.max(0, (progress - 0.35) * 2.4))));
+      });
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("resize", updateProgress);
+    };
+  }, []);
 
   const handleContactSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -211,9 +247,12 @@ function Portfolio() {
         {menuOpen && <div className="mobile-nav">{navigation.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}<ArrowUpRight aria-hidden="true" /></a>)}<a href={resumeRequest} onClick={() => setMenuOpen(false)}>Request résumé<ArrowUpRight aria-hidden="true" /></a></div>}
       </header>
 
-      <section className="hero" id="home">
+      <section className="hero" id="home" ref={heroRef}>
         <div className="hero-grain" aria-hidden="true" />
-        <div className="hero-inner">
+        <div className="hero-scroll-frame" aria-hidden="true">
+          <img src={profileImage} alt="" />
+        </div>
+        <div className="hero-inner" ref={heroInnerRef}>
           <div className="hero-topline"><span className="status-mark" /> AVAILABLE FOR MEANINGFUL WORK <span className="hero-topline-right">PORTFOLIO · 2026</span></div>
           <div className="hero-title-wrap">
             <div className="hero-greeting">Hello, I’m</div>
@@ -248,6 +287,7 @@ function Portfolio() {
             </div>
             <a className="scroll-cue" href="#about"><span>SCROLL TO EXPLORE</span><ArrowDown aria-hidden="true" /></a>
           </div>
+          <p className="hero-motion-title" aria-hidden="true">BUILD WITH PURPOSE</p>
         </div>
         <div className="hero-edge-note" aria-hidden="true">BUILD WITH PURPOSE · BUILD WITH PURPOSE ·</div>
       </section>

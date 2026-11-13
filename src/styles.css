@@ -129,22 +129,25 @@ main { overflow: clip; }
 .nav-resume { height: 38px; border-radius: 2px; background: var(--lime); color: var(--forest); font-size: 11px; font-weight: 700; }
 .nav-resume:hover, .button-lime:hover { background: var(--cream); color: var(--forest); }
 .menu-toggle, .mobile-nav { display: none; }
-.hero { min-height: 780px; position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(ellipse at 50% 52%, oklch(0.34 0.056 123 / 77%) 0%, oklch(0.25 0.05 124 / 22%) 34%, transparent 66%), var(--forest); }
+.hero { --hero-progress: 0; --hero-frame-width: 100vw; --hero-frame-height: 100svh; --hero-frame-radius: 0px; --hero-content-opacity: 1; --hero-motion-opacity: 0; height: calc(100svh + 900px); position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(ellipse at 50% 52%, oklch(0.34 0.056 123 / 77%) 0%, oklch(0.25 0.05 124 / 22%) 34%, transparent 66%), var(--forest); }
+.hero-scroll-frame { position: sticky; z-index: 0; top: calc((100svh - var(--hero-frame-height)) / 2); left: 50%; width: var(--hero-frame-width); height: var(--hero-frame-height); margin-bottom: calc(-1 * var(--hero-frame-height)); overflow: hidden; transform: translateX(calc((100vw - var(--hero-frame-width)) / 2)); border-radius: var(--hero-frame-radius); background: radial-gradient(ellipse at 50% 38%, oklch(0.34 0.056 123 / 77%), var(--forest) 74%); box-shadow: 0 0 0 1px color-mix(in oklab, var(--cream) 16%, transparent); }
+.hero-scroll-frame img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; opacity: calc(.18 + var(--hero-progress) * .48); }
+.hero-scroll-frame::after { position: absolute; inset: 0; content: ""; background: linear-gradient(180deg, color-mix(in oklab, var(--forest) 15%, transparent), transparent 48%, color-mix(in oklab, var(--forest) 54%, transparent)); pointer-events: none; }
 .hero::before { position: absolute; z-index: -1; inset: 0; content: ""; opacity: .25; background-image: repeating-linear-gradient(122deg, transparent 0 84px, oklch(0.83 0.11 122 / 8%) 85px, transparent 86px 168px), repeating-linear-gradient(31deg, transparent 0 121px, oklch(0.83 0.11 122 / 6%) 122px, transparent 123px 242px); mask-image: radial-gradient(ellipse at 51% 47%, #000 0%, transparent 78%); }
 .hero-grain { pointer-events: none; position: absolute; inset: 0; z-index: -1; opacity: .18; background-image: radial-gradient(ellipse at 7% 26%, oklch(0.57 0.065 122 / 28%), transparent 32%), radial-gradient(ellipse at 96% 79%, oklch(0.44 0.065 120 / 32%), transparent 35%); }
 .hero-inner, .section-shell { width: min(1192px, calc(100% - 96px)); margin-inline: auto; }
-.hero-inner { padding-top: 112px; padding-bottom: 32px; }
+.hero-inner { position: sticky; top: 0; z-index: 2; display: flex; height: max(100svh, 840px); box-sizing: border-box; flex-direction: column; justify-content: space-between; overflow: hidden; padding-top: 112px; padding-bottom: 32px; }
 .hero-topline { display: flex; align-items: center; gap: 9px; color: color-mix(in oklab, var(--cream) 61%, transparent); font-size: 9px; letter-spacing: 0.12em; }
 .status-mark { display: inline-block; width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 13px color-mix(in oklab, var(--lime) 48%, transparent); }
 .hero-topline-right { margin-left: auto; }
-.hero-title-wrap { position: relative; z-index: 3; margin-top: 18px; text-align: center; }
+.hero-title-wrap { position: relative; z-index: 3; margin-top: 18px; text-align: center; opacity: var(--hero-content-opacity); }
 .hero-greeting { margin-bottom: -5px; color: var(--lime); font-family: var(--font-editorial); font-size: 21px; font-style: italic; }
 .hero h1 { margin: 0; font-size: clamp(76px, 11.2vw, 144px); line-height: .78; font-weight: 800; letter-spacing: 0; }
 .hero h1 > span { display: block; }
 .hero-name-last { margin-top: 12px; }
 .hero-period { color: var(--lime); }
 .hero-layout { display: grid; grid-template-columns: 1fr minmax(250px, 35%) 1fr; align-items: center; gap: 38px; margin-top: -10px; min-height: 330px; }
-.hero-side { align-self: center; position: relative; z-index: 4; }
+.hero-side { align-self: center; position: relative; z-index: 4; opacity: var(--hero-content-opacity); }
 .hero-side-left { justify-self: end; text-align: right; }
 .hero-side-right { justify-self: start; }
 .side-index, .eyebrow { color: var(--lime); font-size: 9px; font-weight: 650; line-height: 1.6; letter-spacing: .11em; }
@@ -155,7 +158,7 @@ main { overflow: clip; }
 .hero-side-right .side-rule { margin-left: 0; }
 .side-small { margin: 0; color: color-mix(in oklab, var(--cream) 47%, transparent); font-size: 10px; line-height: 1.7; }
 .portrait-placeholder { width: 100%; max-width: 320px; aspect-ratio: .88; justify-self: center; align-self: end; position: relative; z-index: 4; display: grid; place-items: center; margin-top: -1px; overflow: visible; background: transparent; border: 0; box-shadow: none; }
-.profile-image { position: absolute; z-index: 1; left: 50%; bottom: 0; width: 140%; height: 140%; transform: translateX(-50%); object-fit: contain; object-position: center bottom; }
+.profile-image { position: absolute; z-index: 1; left: 50%; bottom: 0; width: 140%; height: 140%; transform: translateX(-50%); object-fit: contain; object-position: center bottom; opacity: var(--hero-content-opacity); }
 .portrait-placeholder::before, .portrait-placeholder::after, .portrait-orbit { display: none; }
 .portrait-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 7px; }
 .portrait-monogram { color: oklch(0.9 0.12 121 / 72%); font-size: clamp(75px, 11vw, 130px); font-weight: 700; line-height: .9; }
@@ -163,7 +166,7 @@ main { overflow: clip; }
 .portrait-caption { position: absolute; left: 11px; bottom: 11px; color: color-mix(in oklab, var(--cream) 58%, transparent); font-size: 8px; letter-spacing: .12em; }
 .portrait-orbit { position: absolute; width: 8px; aspect-ratio: 1; z-index: 1; border: 1px solid var(--lime); border-radius: 50%; background: var(--forest); }
 .orbit-one { top: 22%; left: 11%; }.orbit-two { right: 10%; bottom: 28%; }
-.hero-bottom { position: relative; z-index: 5; display: grid; grid-template-columns: minmax(220px, 1.1fr) auto minmax(155px, .8fr); align-items: center; gap: 24px; margin-top: 18px; }
+.hero-bottom { position: relative; z-index: 5; display: grid; grid-template-columns: minmax(220px, 1.1fr) auto minmax(155px, .8fr); align-items: center; gap: 24px; margin-top: 18px; opacity: var(--hero-content-opacity); }
 .hero-description { max-width: 335px; margin: 0; color: color-mix(in oklab, var(--cream) 68%, transparent); font-size: 12px; line-height: 1.8; }
 .hero-actions { display: flex; align-items: center; gap: 10px; }
 .button-lime { min-height: 43px; padding: 0 17px; border: 1px solid var(--lime); border-radius: 2px; background: var(--lime); color: var(--forest); font-size: 11px; font-weight: 700; transition: background-color 170ms ease, color 170ms ease, border-color 170ms ease; }
@@ -173,6 +176,7 @@ main { overflow: clip; }
 .scroll-cue { display: flex; justify-self: end; align-items: center; gap: 12px; color: color-mix(in oklab, var(--cream) 58%, transparent); font-size: 8px; letter-spacing: .12em; }
 .scroll-cue svg { width: 14px; color: var(--lime); }
 .hero-edge-note { position: absolute; top: 52%; right: 12px; color: oklch(0.88 0.1 121 / 40%); writing-mode: vertical-rl; font-size: 8px; letter-spacing: .14em; }
+.hero-motion-title { position: absolute; top: 50%; left: 50%; z-index: 6; width: max-content; max-width: calc(100% - 32px); margin: 0; transform: translate(-50%, -50%) translateY(calc((1 - var(--hero-progress)) * 16px)); color: var(--cream); font-size: clamp(28px, 5vw, 64px); font-weight: 750; text-align: center; opacity: var(--hero-motion-opacity); pointer-events: none; }
 .ticker { min-height: 46px; overflow: hidden; display: flex; align-items: center; border-block: 1px solid oklch(0.87 0.1 122 / 22%); background: var(--lime); color: var(--forest); }
 .ticker-track { width: 100%; overflow: hidden; white-space: nowrap; }
 .ticker-track > span { display: block; width: max-content; animation: ticker-scroll 34s linear infinite; font-size: 10px; font-weight: 750; letter-spacing: .12em; }
@@ -434,5 +438,8 @@ main { overflow: clip; }
   .footer-links { gap: 9px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .hero { height: auto; }
+  .hero-inner { position: relative; height: auto; min-height: 780px; }
+  .hero-scroll-frame { display: none; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
