@@ -192,12 +192,15 @@ function Portfolio() {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const scrollRange = hero.offsetHeight - heroInner.offsetHeight;
-        const progress = scrollRange > 0 ? Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / scrollRange)) : 0;
+        const heroTop = hero.getBoundingClientRect().top;
+        const progress = scrollRange > 0 ? Math.min(1, Math.max(0, -heroTop / scrollRange)) : 0;
         hero.style.setProperty("--hero-progress", String(progress));
         const compactWidth = Math.min(window.innerWidth * (window.innerWidth < 700 ? 0.84 : 0.72), window.innerWidth < 700 ? 360 : 520);
         const compactHeight = Math.min(window.innerHeight * (window.innerWidth < 700 ? 0.48 : 0.54), window.innerWidth < 700 ? 420 : 510);
         hero.style.setProperty("--hero-frame-width", `${Math.round(window.innerWidth + (compactWidth - window.innerWidth) * progress)}px`);
         hero.style.setProperty("--hero-frame-height", `${Math.round(window.innerHeight + (compactHeight - window.innerHeight) * progress)}px`);
+        hero.style.setProperty("--hero-frame-offset-x", `${Math.round((window.innerWidth - compactWidth) * progress / 2)}px`);
+        hero.style.setProperty("--hero-frame-offset-y", `${Math.round((window.innerHeight - compactHeight) * progress / 2)}px`);
         hero.style.setProperty("--hero-frame-radius", `${Math.round(progress * 22)}px`);
         hero.style.setProperty("--hero-content-opacity", String(Math.max(0, 1 - progress * 1.65)));
         hero.style.setProperty("--hero-motion-opacity", String(Math.min(1, Math.max(0, (progress - 0.35) * 2.4))));
