@@ -260,7 +260,7 @@ function Portfolio() {
           <div className="hero-glow" aria-hidden="true" />
           <div className="hero-opening" aria-hidden="true">
             <div className="hero-opening-copy">
-              <p className="hero-opening-name"><span>Gangula</span><span>Manjunadha</span></p>
+              <p className="hero-opening-name">Gangula Manjunadha</p>
               <p className="hero-opening-role">Developer</p>
             </div>
             <img className="hero-opening-image" src={profileImage} alt="" />
