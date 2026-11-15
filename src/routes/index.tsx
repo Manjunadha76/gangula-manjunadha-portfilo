@@ -203,8 +203,10 @@ function Portfolio() {
         hero.style.setProperty("--hero-fit", fit.toFixed(4));
         const header = headerRef.current;
         if (header) {
+          const exit = Math.max(0, -heroTop - scrollRange);
           header.style.setProperty("--hero-progress", progress.toFixed(4));
-          header.classList.toggle("nav-hidden", progress < 0.18);
+          header.style.setProperty("--nav-exit", `${Math.round(exit)}px`);
+          header.classList.toggle("nav-hidden", progress < 0.18 || exit >= header.offsetHeight);
         }
       });
     };
