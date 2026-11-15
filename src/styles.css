@@ -139,7 +139,7 @@ main { overflow: clip; }
 .hero-grain { pointer-events: none; position: absolute; inset: 0; z-index: -1; opacity: .18; background-image: radial-gradient(ellipse at 7% 26%, oklch(0.57 0.065 122 / 28%), transparent 32%), radial-gradient(ellipse at 96% 79%, oklch(0.44 0.065 120 / 32%), transparent 35%); }
 .section-shell { width: min(1192px, calc(100% - 96px)); margin-inline: auto; }
 .hero-inner { position: sticky; top: 0; z-index: 2; width: 100%; height: 100svh; overflow: hidden; }
-.hero-opening { --opening-image-height: min(66svh, 580px); position: absolute; inset: 0; z-index: 7; width: min(1192px, calc(100% - 96px)); margin-inline: auto; display: grid; place-items: center; opacity: clamp(0, calc(1 - var(--hero-progress) * 3), 1); visibility: visible; pointer-events: none; }
+.hero-opening { --opening-image-height: min(56svh, 580px); position: absolute; inset: 0; z-index: 7; width: min(1192px, calc(100% - 96px)); margin-inline: auto; display: grid; place-items: center; opacity: clamp(0, calc(1 - var(--hero-progress) * 3), 1); visibility: visible; pointer-events: none; }
 .hero-opening-copy { position: absolute; z-index: 2; top: calc(50% + var(--opening-image-height) / 2 - 62px); width: 100%; min-width: 0; text-align: center; font-family: var(--font-opening); letter-spacing: 0; }
 .hero-opening-name { margin: 0; font-size: 76px; font-weight: 400; line-height: 1.2; }
 .hero-opening-role { margin: 8px 0 0; color: var(--lime); font-size: 34px; line-height: 1.2; }
