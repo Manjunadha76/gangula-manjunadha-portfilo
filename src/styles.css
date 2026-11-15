@@ -176,7 +176,7 @@ main { overflow: clip; }
 .scroll-cue { display: flex; justify-self: end; align-items: center; gap: 12px; color: color-mix(in oklab, var(--cream) 58%, transparent); font-size: 8px; letter-spacing: .12em; }
 .scroll-cue svg { width: 14px; color: var(--lime); }
 .hero-edge-note { position: absolute; top: 52%; right: 12px; color: oklch(0.88 0.1 121 / 40%); writing-mode: vertical-rl; font-size: 8px; letter-spacing: .14em; }
-.hero-motion-title { position: absolute; top: 50%; left: 50%; z-index: 6; width: max-content; max-width: calc(100% - 32px); margin: 0; transform: translate(-50%, -50%) translateY(calc((1 - var(--hero-progress)) * 16px)); color: var(--cream); font-size: clamp(28px, 5vw, 64px); font-weight: 750; text-align: center; opacity: var(--hero-motion-opacity); pointer-events: none; }
+.hero-motion-title { position: absolute; top: min(50%, 50svh); left: 50%; z-index: 6; width: max-content; max-width: calc(100% - 32px); margin: 0; transform: translate(-50%, -50%) translateY(calc((1 - var(--hero-progress)) * 16px)); color: var(--cream); font-size: clamp(28px, 5vw, 64px); font-weight: 750; text-align: center; opacity: var(--hero-motion-opacity); pointer-events: none; }
 .ticker { min-height: 46px; overflow: hidden; display: flex; align-items: center; border-block: 1px solid oklch(0.87 0.1 122 / 22%); background: var(--lime); color: var(--forest); }
 .ticker-track { width: 100%; overflow: hidden; white-space: nowrap; }
 .ticker-track > span { display: block; width: max-content; animation: ticker-scroll 34s linear infinite; font-size: 10px; font-weight: 750; letter-spacing: .12em; }
