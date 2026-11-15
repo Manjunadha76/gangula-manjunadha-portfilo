@@ -183,6 +183,7 @@ function Portfolio() {
   const [formStatus, setFormStatus] = useState("");
   const heroRef = useRef<HTMLElement | null>(null);
   const heroInnerRef = useRef<HTMLDivElement | null>(null);
+  const headerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const hero = heroRef.current;
@@ -200,6 +201,11 @@ function Portfolio() {
         const fit = Math.min(1, window.innerHeight / (window.innerWidth <= 700 ? HERO_STAGE_HEIGHT_MOBILE : HERO_STAGE_HEIGHT));
         hero.style.setProperty("--hero-progress", progress.toFixed(4));
         hero.style.setProperty("--hero-fit", fit.toFixed(4));
+        const header = headerRef.current;
+        if (header) {
+          header.style.setProperty("--hero-progress", progress.toFixed(4));
+          header.classList.toggle("nav-hidden", progress < 0.18);
+        }
       });
     };
 
@@ -232,7 +238,7 @@ function Portfolio() {
 
   return (
     <main>
-      <header className="site-header">
+      <header className="site-header" ref={headerRef}>
         <nav className="nav-shell" aria-label="Main navigation">
           <a className="brand-mark" href="#home" aria-label="Gangula Manjunadha, home"><span>G</span>M<span className="brand-dot">.</span></a>
           <div className="desktop-nav">
