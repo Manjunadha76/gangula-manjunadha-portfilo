@@ -168,7 +168,7 @@ export const Route = createFileRoute("/")({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700;750;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700;750;800&family=Great+Vibes&family=Playfair+Display:ital,wght@1,500;1,600&display=swap",
       },
     ],
   }),
@@ -258,6 +258,13 @@ function Portfolio() {
         <div className="hero-grain" aria-hidden="true" />
         <div className="hero-inner" ref={heroInnerRef}>
           <div className="hero-glow" aria-hidden="true" />
+          <div className="hero-opening" aria-hidden="true">
+            <div className="hero-opening-copy">
+              <p className="hero-opening-name"><span>Gangula</span><span>Manjunadha</span></p>
+              <p className="hero-opening-role">Developer</p>
+            </div>
+            <img className="hero-opening-image" src={profileImage} alt="" />
+          </div>
           <div className="hero-stage">
           <div className="hero-topline"><span className="status-mark" /> AVAILABLE FOR MEANINGFUL WORK <span className="hero-topline-right">PORTFOLIO · 2026</span></div>
           <div className="hero-title-wrap">
