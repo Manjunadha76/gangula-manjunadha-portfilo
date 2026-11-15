@@ -176,6 +176,7 @@ export const Route = createFileRoute("/")({
 });
 
 const HERO_STAGE_HEIGHT = 840;
+const HERO_STAGE_HEIGHT_MOBILE = 960;
 
 function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -196,7 +197,7 @@ function Portfolio() {
         const scrollRange = hero.offsetHeight - heroInner.offsetHeight;
         const heroTop = hero.getBoundingClientRect().top;
         const progress = scrollRange > 0 ? Math.min(1, Math.max(0, -heroTop / scrollRange)) : 0;
-        const fit = Math.min(1, window.innerHeight / HERO_STAGE_HEIGHT);
+        const fit = Math.min(1, window.innerHeight / (window.innerWidth <= 700 ? HERO_STAGE_HEIGHT_MOBILE : HERO_STAGE_HEIGHT));
         hero.style.setProperty("--hero-progress", progress.toFixed(4));
         hero.style.setProperty("--hero-fit", fit.toFixed(4));
       });
