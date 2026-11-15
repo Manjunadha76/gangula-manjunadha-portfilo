@@ -32,3 +32,5 @@ use the editor.
 Portfolio presentation stays in the home route and shared style tokens; keep profile content and section navigation together so the single-page experience remains cohesive.
 
 Keep the homepage scroll-expansion motion tied to the hero stage and honor reduced-motion preferences so the portfolio remains usable without animated movement.
+
+Keep entrance-only typography and positioning in a separate decorative hero layer that fades into the existing stage; this preserves the revealed layout and its accessible heading.
