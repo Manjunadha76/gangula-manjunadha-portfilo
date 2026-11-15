@@ -175,6 +175,8 @@ export const Route = createFileRoute("/")({
   component: Portfolio,
 });
 
+const HERO_STAGE_HEIGHT = 840;
+
 function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState("");
@@ -194,16 +196,9 @@ function Portfolio() {
         const scrollRange = hero.offsetHeight - heroInner.offsetHeight;
         const heroTop = hero.getBoundingClientRect().top;
         const progress = scrollRange > 0 ? Math.min(1, Math.max(0, -heroTop / scrollRange)) : 0;
-        hero.style.setProperty("--hero-progress", String(progress));
-        const compactWidth = Math.min(window.innerWidth * (window.innerWidth < 700 ? 0.84 : 0.72), window.innerWidth < 700 ? 360 : 520);
-        const compactHeight = Math.min(window.innerHeight * (window.innerWidth < 700 ? 0.48 : 0.54), window.innerWidth < 700 ? 420 : 510);
-        hero.style.setProperty("--hero-frame-width", `${Math.round(window.innerWidth + (compactWidth - window.innerWidth) * progress)}px`);
-        hero.style.setProperty("--hero-frame-height", `${Math.round(window.innerHeight + (compactHeight - window.innerHeight) * progress)}px`);
-        hero.style.setProperty("--hero-frame-offset-x", `${Math.round((window.innerWidth - compactWidth) * progress / 2)}px`);
-        hero.style.setProperty("--hero-frame-offset-y", `${Math.round((window.innerHeight - compactHeight) * progress / 2)}px`);
-        hero.style.setProperty("--hero-frame-radius", `${Math.round(progress * 22)}px`);
-        hero.style.setProperty("--hero-content-opacity", String(Math.max(0, 1 - progress * 1.65)));
-        hero.style.setProperty("--hero-motion-opacity", String(Math.min(1, Math.max(0, (progress - 0.35) * 2.4))));
+        const fit = Math.min(1, window.innerHeight / HERO_STAGE_HEIGHT);
+        hero.style.setProperty("--hero-progress", progress.toFixed(4));
+        hero.style.setProperty("--hero-fit", fit.toFixed(4));
       });
     };
 
@@ -252,10 +247,9 @@ function Portfolio() {
 
       <section className="hero" id="home" ref={heroRef}>
         <div className="hero-grain" aria-hidden="true" />
-        <div className="hero-scroll-frame" aria-hidden="true">
-          <img src={profileImage} alt="" />
-        </div>
         <div className="hero-inner" ref={heroInnerRef}>
+          <div className="hero-glow" aria-hidden="true" />
+          <div className="hero-stage">
           <div className="hero-topline"><span className="status-mark" /> AVAILABLE FOR MEANINGFUL WORK <span className="hero-topline-right">PORTFOLIO · 2026</span></div>
           <div className="hero-title-wrap">
             <div className="hero-greeting">Hello, I’m</div>
@@ -290,9 +284,9 @@ function Portfolio() {
             </div>
             <a className="scroll-cue" href="#about"><span>SCROLL TO EXPLORE</span><ArrowDown aria-hidden="true" /></a>
           </div>
-          <p className="hero-motion-title" aria-hidden="true">BUILD WITH PURPOSE</p>
+          </div>
+          <div className="hero-entry-cue" aria-hidden="true"><span>SCROLL TO REVEAL</span><ArrowDown /></div>
         </div>
-        <div className="hero-edge-note" aria-hidden="true">BUILD WITH PURPOSE · BUILD WITH PURPOSE ·</div>
       </section>
 
       <div className="ticker" aria-label="Areas of focus"><div className="ticker-track"><span>FULL STACK DEVELOPMENT <b>✳</b> GENERATIVE AI <b>✳</b> HEALTHCARE TECHNOLOGY <b>✳</b> SECURE BY DESIGN <b>✳</b> FULL STACK DEVELOPMENT <b>✳</b> GENERATIVE AI <b>✳</b> HEALTHCARE TECHNOLOGY <b>✳</b> SECURE BY DESIGN <b>✳</b></span></div></div>
