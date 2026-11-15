@@ -362,7 +362,7 @@ main { overflow: clip; }
   .hero-side-right { grid-column: 2; }
   .hero-layout { padding-bottom: 0; }
   .hero-layout .portrait-placeholder { top: 195px; bottom: auto; }
-  .hero-layout .profile-image { transform: translateX(-50%) translateY(calc((1 - var(--hero-reveal-side)) * -150px)) scale(calc(1.06 - var(--hero-settle) * 0.06)); }
+  .hero-layout .profile-image { transform: translateX(-50%) translateY(calc((1 - clamp(0, calc(var(--hero-progress) * 4.5), 1)) * -150px)) scale(calc(1.06 - var(--hero-settle) * 0.06)); }
   .hero-side { position: relative; z-index: 5; align-self: start; margin-top: 38px; }
   .side-index { font-size: 7px; }
   .side-main { margin-top: 12px; font-size: 14px; }
